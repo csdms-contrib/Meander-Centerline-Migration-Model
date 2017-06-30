@@ -2,6 +2,7 @@
 This repository contains the source codes of the numerical model developed by Bogoni et al. WRR 2017.
 Information about the model and the sctructure of input and output files are reported in the file README.pdf
 
+[![DOI](https://zenodo.org/badge/95902287.svg)](https://zenodo.org/badge/latestdoi/95902287)
 
 CODE PROPERTIES
 * The source code is written in Fortran 77/90 language, thus a Fortran compiler is required (e.g. gfortran).
