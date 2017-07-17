@@ -10,6 +10,30 @@
 ! FLOODPLAIN:
 ! Camporeale et al. JGR 2005, M.Bogoni (PhD Thesis 2016)
 !-----------------------------------------------------------------------
+
+! Copyright (C) 2017 Manuel Bogoni
+! Developer can be contacted by manuel.bogoni@dicea.unipd.it
+! This program is free software; you can redistribute it and/or modify it 
+! under the terms of the GNU General Public License as published by the Free 
+! Software Foundation; either version 2 of the License, or (at your option) 
+! any later version. 
+! Redistribution and use in source and binary form, with or without
+! modification, are permitted provided that the following conditions are met:
+! * redistribution of source code must retain the above copyright notice, this 
+!   list of conditions and the following disclaimer;
+! * redistribution in binary form must reproduce the above copyright notice,
+!   this list of conditions and the following disclaimer in the documentation
+!   and/or other material provided with the distribution;
+! * the following manuscript must be cited: Bogoni et al. WRR 2017
+!   DOI: 10.1002/2017WR020726 
+! This program is distributed in the hope that it will be useful, but 
+! WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+! or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for 
+! more details. 
+! You should have received a copy of the GNU General Public License along 
+! with this program; if not, write to the Free Software Foundation, Inc., 
+! 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+
       program mcmm
 
       use module_global
@@ -19,7 +43,7 @@
       integer DateTimeI(8), DateTimeE(8)
       integer flagco, ierr, trasp, fondo, RUNSIM, j, jt, jprint
       real*8 tfc, time, year2sec, Tend, Tstart, dt, timestep, dCf, dLs
-      real*8 Eaux
+      real*8 Eaux, boundaries
       parameter ( year2sec = 86400.d0 * 365.d0 )
       real*8, allocatable :: dUx(:), dUy(:), dUxold(:), dUyold(:)
 
@@ -77,9 +101,12 @@
       
       call dashline(6)
       write(6,*) 'VALLEY STRUCTURE'
-      write(6,102) 'Ef =', Ef
-      write(6,102) 'Eb =', Eb
-      write(6,102) 'Eo =', Eo
+      write(6,102) 'Ef  =', Ef
+      write(6,102) 'Eb  =', Eb
+      write(6,102) 'Eo  =', Eo
+      if (jbound.ge.1) then
+        write(6,102) 'Ebv =', Ebound
+      end if
       call dashline(6)
       write(6,*) 'LEADING PARAMETERS'
       write(6,103) 'beta = ', beta0, 'theta =', theta0
@@ -271,8 +298,7 @@
 ! assign the floodplain erodibility
           if ((Nnco.eq.0).or.       &
      &      ( (ABS(Ef-Eo).lt.1.D-12).and.(ABS(Ef-Eb).lt.1.D-12)) ) then
-            call boundaries (1, j, N, x, y, Eaux)
-            E(j) = Eaux
+            E(j) = boundaries(j)
             Npf = Npf + 1
 
 ! assign erodibility to the current point: if there are oxbows, then
@@ -282,8 +308,7 @@
 
 ! node in floodplain
             if (whereisnode(j).eq.0) then
-              call boundaries (1, j, N, x, y, Eaux)
-              E(j) = Eaux
+              E(j) = boundaries(j)
               Npf = Npf + 1
 
 ! node in point bar
