@@ -1,5 +1,5 @@
 # Meander-Centerline-Migration-Model
-This repository contains the source codes of the numerical model developed by Bogoni et al. WRR 2017.
+This repository contains the source codes of the numerical model developed by Bogoni et al. WRR 2017 (http://onlinelibrary.wiley.com/doi/10.1002/2017WR020726/abstract)
 
 [![DOI](https://zenodo.org/badge/95902287.svg)](https://zenodo.org/badge/latestdoi/95902287)
 
