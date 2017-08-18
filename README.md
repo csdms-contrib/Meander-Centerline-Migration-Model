@@ -1,13 +1,20 @@
-# Meander-Centerline-Migration-Model
-This repository contains the source codes of the numerical model developed by Bogoni et al. WRR 2017 (http://onlinelibrary.wiley.com/doi/10.1002/2017WR020726/abstract)
+# Meander Centerline Migration Model (MCMM)
+This repository contains the source codes of the numerical model developed by [Bogoni et al. WRR 2017](http://onlinelibrary.wiley.com/doi/10.1002/2017WR020726/abstract).
 
 [![DOI](https://zenodo.org/badge/95902287.svg)](https://zenodo.org/badge/latestdoi/95902287)
 
 CODE PROPERTIES
 * The source code is written in Fortran 77/90 language, thus a Fortran compiler is required (e.g. gfortran).
-* The code can be easily compiled through the script compile_unix (for UNIX/MAC) or compile_windows.cmd (for Windows).
-* The compressed folder 'input' contains a couple of templates.
-* Input files must be into the 'input' folder, located in the same directory of the executable file.
-* Folders 'temp' and 'output' are required in the same directory of the executable file.
+* The code can be compiled through the script compile_unix (for UNIX/MAC) or compile_windows.cmd (for Windows).
+* Information about the model and the sctructure of input and output files are reported in the file _README.pdf_
+* The folder _input_ contains a couple of templates.
+* Input files must be into the _input_ folder, located in the same directory of the executable file.
+* Folders _temp_ and _output_ are required in the same directory of the executable file.
 
-See also: https://github.com/FluidMechanicsUNIPD/Meander_Floodplain_Heterogeneity
+See also:
+
+[CSDMS website](http://csdms.colorado.edu/wiki/Model:Meander_Centerline_Migration_Model)
+
+[MCMM website](https://fluidmechanicsunipd.github.io/Meander-Centerline-Migration-Model)
+
+[MCMM on GitHub](https://github.com/FluidMechanicsUNIPD/Meander-Centerline-Migration-Model)
